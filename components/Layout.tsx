@@ -1,8 +1,12 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Head from "next/head";
 import GlobalStyle from "../theme/GlobalStyle";
 
-const Layout: React.FC = ({ children }) => (
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => (
   <>
     <GlobalStyle />
     <Head>

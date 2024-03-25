@@ -1,17 +1,19 @@
 import React from "react";
-import Document, { DocumentInitialProps } from "next/document";
+import Document, { DocumentContext, DocumentInitialProps } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import { AppType } from "next/dist/shared/lib/utils";
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx): Promise<DocumentInitialProps> {
+  static async getInitialProps(
+    ctx: DocumentContext
+  ): Promise<DocumentInitialProps> {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
     try {
-      ctx.renderPage = () =>
+      ctx.renderPage = (): ReturnType<typeof originalRenderPage> =>
         originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            // eslint-disable-next-line react/jsx-props-no-spreading
+          enhanceApp: (App: AppType): any => (props: any): any =>
             sheet.collectStyles(<App {...props} />),
         });
 
