@@ -19,7 +19,7 @@ const createdAt = (duration: Duration | Duration[]): string[] => {
   if (!Array.isArray(duration[0])) {
     const [start, end] = duration as Duration;
     if (end === undefined) {
-      return [`${formatMonth(start)} - present`];
+      return [`${formatMonth(start)} - Present`];
     } else {
       return [`${formatMonth(start)} - ${formatMonth(end)}`];
     }
