@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { Emojione } from "react-emoji-render";
 import { Timeline, TimelineEvent } from "react-event-timeline";
 
-type Duration = [Date] | [Date, undefined] | [Date, Date];
+type Duration = [Date] | [Date, Date];
 
 export type Event = {
   title: string;
@@ -14,24 +14,25 @@ export type Event = {
 };
 
 const formatMonth = (date: Date): string => format(date, "LLLL yyyy");
-const isDate = (duration: Duration | Date | undefined): duration is Date =>
-  duration && !Array.isArray(duration);
 
 const createdAt = (duration: Duration | Duration[]): string[] => {
-  const [start, end] = duration;
-  if (isDate(start)) {
-    return [
-      `${formatMonth(start)} - ${isDate(end) ? formatMonth(end) : "present"}`,
-    ];
+  if (!Array.isArray(duration[0])) {
+    const [start, end] = duration as Duration;
+    if (end === undefined) {
+      return [`${formatMonth(start)} - present`];
+    } else {
+      return [`${formatMonth(start)} - ${formatMonth(end)}`];
+    }
+  } else {
+    return (duration as Duration[]).map((event) => createdAt(event)).flat();
   }
-  return (duration as Duration[]).map((event) => createdAt(event)).flat();
 };
 
 const CustomTimeline: React.FC<{ events: Event[] }> = ({ events }) => (
   <Timeline>
     {events.reverse().map((event) => (
       <TimelineEvent
-        key={event.title + event.location}
+        key={event.title + (event.location ? event.location : "")}
         title={
           <h4>
             {event.title}
