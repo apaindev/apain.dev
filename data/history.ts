@@ -6,8 +6,8 @@ const history: Event[] = [
     location: "Middlesex Aerospace",
     duration: [new Date("2020-01-06"), new Date("2023-07-14")],
     details: [
-      "Full-stack TypeScript/JavaScript developer",
-      "Manage all aspects of development from linting to deployment to system design",
+      "Maintain the IT infrastructure serving around 120 users",
+      "Manage all aspects of system administration from entire infrastructure overhauls to day to day support",
     ],
   },
   {
