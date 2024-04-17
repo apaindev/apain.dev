@@ -154,19 +154,13 @@ const Home: React.FC = () => (
       <AboutSection>
         <h2>What I do</h2>
         <li>
-          <b>-</b> Stuff here
+          <b>-</b> I implement scalable infrastructures for the purpose of Power BI reporting, such as workspaces & apps, row-level security, security groups, licensing and data refresh schedules
         </li>
         <li>
-          <b>-</b> Here
+          <b>-</b> I help gain deeper insights into your business with personalised reports and dashboards. Easy-to-use, self service business intelligence for your enterprise.
         </li>
         <li>
-          <b>-</b> Here
-        </li>
-        <li>
-          <b>-</b> Here
-        </li>
-        <li>
-          <b>-</b> and lastly here
+          <b>-</b> Use in-built AI to develop fast answers to business questions using conversational language. Create memorable reports personalised with your own KPIs and brand.
         </li>
       </AboutSection>
       <HistorySection>
